@@ -125,11 +125,88 @@ body {
 
 .header {
   padding: 2em 0 1em 0;
-  margin: 0 1em;
   border-bottom: 1px solid lightgray;
 }
 .header__p {
   margin-bottom: 0.25em;
   font-size: 2em;
   font-weight: bold;
+}
+.main__div {
+  margin: 2em 0;
+}
+.main__div--completed .section__h3 {
+  opacity: 0.3;
+}
+.main__p {
+  margin: 2em 0;
+  font-weight: bold;
+}
+.main__section {
+  margin: 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1em;
+}
+.main__button {
+  width: 4.6875em;
+  height: 4.6875em;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: blue;
+  border-radius: 50%;
+}
+
+.section__input {
+  width: 1.5625em;
+  height: 1.5625em;
+  border: 2px solid lightgray;
+  border-radius: 0.5em;
+}
+.section__h3 {
+  font-weight: bold;
+}
+.section__span {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.button__div {
+  width: 0.1875em;
+  height: 1.875em;
+  position: absolute;
+  background-color: var(--c-white);
+}
+.button__div--90deg {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+body {
+  margin: 0 1em;
 }
