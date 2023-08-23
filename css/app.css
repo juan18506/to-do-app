@@ -135,14 +135,14 @@ body {
 .main__div {
   margin: 2em 0;
 }
-.main__div--completed .section__h3 {
+.main__div--completed .li__h3 {
   opacity: 0.3;
 }
 .main__p {
   margin: 2em 0;
   font-weight: bold;
 }
-.main__section {
+.main__li {
   margin: 1em 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -182,7 +182,7 @@ body {
   border-radius: 50%;
 }
 
-.section__input {
+.li__input {
   width: 1.5625em;
   height: 1.5625em;
   border: 2px solid lightgray;
@@ -190,10 +190,10 @@ body {
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
-.section__h3 {
+.li__h3 {
   font-weight: bold;
 }
-.section__span {
+.li__span {
   font-size: 0.8em;
   opacity: 0.8;
 }
