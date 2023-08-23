@@ -1,10 +1,16 @@
 :root {
   --c-black: #000;
   --c-white: #fff;
-  --p-fonts: Helvetica, Arial, sans-serif;
+  --p-fonts: system-ui, Helvetica, sans-serif;
   --s-fonts: Verdana;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-black: #fff;
+    --c-white: #202020;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   * {
     -webkit-animation: none !important;
@@ -108,10 +114,22 @@ body {
   font-size: 100%;
   font-family: var(--p-fonts);
   color: var(--c-black);
+  background-color: var(--c-white);
   -webkit-hyphens: auto;
       -ms-hyphens: auto;
           hyphens: auto;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+  padding: 2em 0 1em 0;
+  margin: 0 1em;
+  border-bottom: 1px solid lightgray;
+}
+.header__p {
+  margin-bottom: 0.25em;
+  font-size: 2em;
+  font-weight: bold;
 }
