@@ -14,7 +14,7 @@
   }
   &__section {
     margin: 1em 0;
-    @include mx.flex(row, nowrap, flex-start, flex-start);
+    @include mx.flex(row, nowrap, flex-start, center);
     gap: 1em;
   }
   &__button {
@@ -36,6 +36,7 @@
     height: 1.5625em;
     border: 2px solid lightgray;
     border-radius: 0.5em;
+    flex-shrink: 0;
   }
   &__h3 { font-weight: bold; }
   &__span {

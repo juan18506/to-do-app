@@ -154,9 +154,9 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 1em;
 }
 .main__button {
@@ -187,6 +187,8 @@ body {
   height: 1.5625em;
   border: 2px solid lightgray;
   border-radius: 0.5em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 .section__h3 {
   font-weight: bold;
