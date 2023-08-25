@@ -18,16 +18,7 @@
     @include mx.flex(row, nowrap, flex-start, center);
     gap: 1em;
   }
-  &__button {
-    width: 4.6875em;
-    height: 4.6875em;
-    position: fixed;
-    bottom: 1em;
-    right: 1em;
-    @include mx.flex(row, nowrap, center, center);
-    background-color: blue;
-    border-radius: 50%;
-  }
+  &__button {}
 }
 
 .li {
@@ -39,9 +30,7 @@
     border-radius: 0.5em;
     flex-shrink: 0;
 
-    &:checked {
-      background-color: blue;
-    }
+    &:checked { background-color: blue; }
   }
   &__h3 { font-weight: bold; }
   &__span {
@@ -51,7 +40,17 @@
 }
 
 .button {
-  &__div {
+  width: 4.6875em;
+  height: 4.6875em;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  @include mx.flex(row, nowrap, center, center);
+  background-color: blue;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &__span {
     width: 0.1875em;
     height: 1.875em;
     position: absolute;

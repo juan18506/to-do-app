@@ -7,16 +7,28 @@
   position: fixed;
   top: calc(50% - 100px);
   left: calc(50% - 100px);
+  display: none;
 
+  &--active { display: initial; }
+  
   &__form {
     width: 100%;
     height: 100%;
     @include mx.flex(column, nowrap, center, center);
   }
-  &__input {
-    border: 2px solid lightblue;
-  }
-  &__button {
-    border: 2px solid lightblue;
-  }
+  &__input { border: 2px solid lightblue; }
+  &__button { border: 2px solid lightblue; }
+  &__div {}
+}
+
+.closebtn {
+  background-color: lightslategray;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+
+  &__span {}
 }

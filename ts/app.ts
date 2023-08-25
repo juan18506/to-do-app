@@ -15,6 +15,8 @@ const incompletedList = document.getElementById('incomplete__list') as HTMLUList
 const completedList = document.getElementById('completed__list') as HTMLUListElement
 const listStatus = document.getElementById('status') as HTMLParagraphElement
 const form = document.getElementById('form') as HTMLFormElement
+const openBtn = document.getElementById('openbtn') as HTMLButtonElement
+const modal = document.getElementById('modal') as HTMLDivElement
 let incompleteListLenght = 0
 let completedListLenght = 0
 
@@ -57,6 +59,16 @@ completedList.addEventListener('click', (e) => {
 
   const li = e.target.parentElement as HTMLLIElement
   updateList(li, TodoStatus.Completed)
+})
+
+openBtn.addEventListener('click', () => {
+  modal.classList.add('modal--active')
+})
+
+modal.addEventListener('click', (e) => {
+  if (!(e.target instanceof Element) || !e.target.classList.contains('closebtn')) return
+
+  modal.classList.remove('modal--active')
 })
 
 function getCurrentDateData() {
