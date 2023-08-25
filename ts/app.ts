@@ -1,13 +1,14 @@
 'use strict'
 
-enum ListStatus {
+enum TodoStatus {
   Incomplete,
   Completed
 }
 
 type Todo = {
   task: string,
-  topic: string
+  topic: string,
+  status: TodoStatus
 }
 
 const incompletedList = document.getElementById('incomplete__list') as HTMLUListElement
@@ -19,6 +20,10 @@ let completedListLenght = 0
 
 const { currentDay, currentMonth, currentYear } = getCurrentDateData()
 showCurrentDate(currentDay, currentMonth, currentYear)
+
+const localTodos = window.localStorage.getItem('todos')
+const todos: Array<Todo> = localTodos ? JSON.parse(localTodos) : []
+if (localTodos) todos.forEach(todo => addToList(todo, true))
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -33,7 +38,8 @@ form.addEventListener('submit', (e) => {
 
   const todo: Todo = {
     task: inputTask,
-    topic: inputtopic
+    topic: inputtopic,
+    status: TodoStatus.Incomplete
   }
 
   addToList(todo)
@@ -43,14 +49,14 @@ incompletedList.addEventListener('click', (e) => {
   if (!(e.target instanceof HTMLInputElement) || !e.target.checked) return
 
   const li = e.target.parentElement as HTMLLIElement
-  updateList(li, ListStatus.Completed)
+  updateList(li, TodoStatus.Incomplete)
 })
 
 completedList.addEventListener('click', (e) => {
   if (!(e.target instanceof HTMLInputElement) || e.target.checked) return
 
   const li = e.target.parentElement as HTMLLIElement
-  updateList(li, ListStatus.Incomplete)
+  updateList(li, TodoStatus.Completed)
 })
 
 function getCurrentDateData() {
@@ -86,33 +92,69 @@ function showToDoStatus() {
   listStatus.innerHTML = `${incompleteListLenght} incomplete, ${completedListLenght} completed`
 }
 
-function addToList(todo: Todo) {
-  incompletedList.innerHTML += `
-    <li class="main__li li">
-      <input class="li__input" type="checkbox">
-      <div class="li__div">
-        <h3 class="li__h3">${todo.task}</h3>
-        <span class="li__span">${todo.topic}</span>
-      </div>
-    </li>
-  `
+function addToList(todo: Todo, local?: boolean) {
+  if (todo.status === TodoStatus.Incomplete) {
+    incompletedList.innerHTML += `
+      <li class="main__li li">
+        <input class="li__input" type="checkbox">
+        <div class="li__div">
+          <h3 class="li__h3">${todo.task}</h3>
+          <span class="li__span">${todo.topic}</span>
+        </div>
+      </li>
+    `
 
-  incompleteListLenght++
+    incompleteListLenght++
+  }
+
+  if (todo.status === TodoStatus.Completed) {
+    completedList.innerHTML += `
+      <li class="main__li li">
+        <input class="li__input" type="checkbox" ${local ? 'checked' : ''}>
+        <div class="li__div">
+          <h3 class="li__h3">${todo.task}</h3>
+          <span class="li__span">${todo.topic}</span>
+        </div>
+      </li>
+    `
+
+    completedListLenght++
+  }
+
   showToDoStatus()
+  if (!local) {
+    todos.push(todo)
+    updateLocalStorage()
+  }
 }
 
-function updateList(li: HTMLLIElement, status: ListStatus) {
-  if (status === ListStatus.Completed) {
+function updateList(li: HTMLLIElement, status: TodoStatus) {
+  const h3 = li.querySelector('h3') as HTMLHeadingElement
+  const span = li.querySelector('span') as HTMLSpanElement
+
+  for (const todo of todos) {
+    if (todo.task !== h3.innerText || todo.topic !== span.innerText) continue
+
+    todo.status = todo.status === TodoStatus.Completed ? TodoStatus.Incomplete : TodoStatus.Completed
+    break
+  }
+
+  if (status === TodoStatus.Incomplete) {
     completedList.appendChild(li)
     incompleteListLenght--
     completedListLenght++
-    showToDoStatus()
   }
 
-  if (status === ListStatus.Incomplete) {
+  if (status === TodoStatus.Completed) {
     incompletedList.appendChild(li)
     incompleteListLenght++
     completedListLenght--
-    showToDoStatus()
   }
+
+  showToDoStatus()
+  updateLocalStorage()
+}
+
+function updateLocalStorage() {
+  window.localStorage.setItem('todos', JSON.stringify(todos))
 }
