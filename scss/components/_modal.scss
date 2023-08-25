@@ -1,0 +1,22 @@
+@use '../partials/mixins' as mx;
+
+.modal {
+  background-color: lightcoral;
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+
+  &__form {
+    width: 100%;
+    height: 100%;
+    @include mx.flex(column, nowrap, center, center);
+  }
+  &__input {
+    border: 2px solid lightblue;
+  }
+  &__button {
+    border: 2px solid lightblue;
+  }
+}

@@ -38,6 +38,10 @@
     border: 2px solid lightgray;
     border-radius: 0.5em;
     flex-shrink: 0;
+
+    &:checked {
+      background-color: blue;
+    }
   }
   &__h3 { font-weight: bold; }
   &__span {
