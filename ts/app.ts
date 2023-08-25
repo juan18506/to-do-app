@@ -66,7 +66,7 @@ openBtn.addEventListener('click', () => {
 })
 
 modal.addEventListener('click', (e) => {
-  if (!(e.target instanceof Element) || !e.target.classList.contains('closebtn')) return
+  if (!(e.target instanceof HTMLButtonElement)) return
 
   modal.classList.remove('modal--active')
 })

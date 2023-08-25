@@ -50,12 +50,20 @@
   border-radius: 50%;
   cursor: pointer;
 
-  &__span {
-    width: 0.1875em;
-    height: 1.875em;
+  &::before {
+    content: '';
+    width: 33px;
+    height: 3px;
     position: absolute;
-    background-color: var(--c-white);
+    background-color: white;
+  }
 
-    &--90deg { transform: rotate(90deg); }
+  &::after {
+    content: '';
+    width: 33px;
+    height: 3px;
+    position: absolute;
+    background-color: white;
+    transform: rotate(90deg);
   }
 }
