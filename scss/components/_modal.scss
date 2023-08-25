@@ -1,14 +1,12 @@
 @use '../partials/mixins' as mx;
 
 .modal {
-  background-color: lightcoral;
   width: 100%;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-  overflow: scroll;
   display: none;
 
   &--active { display: initial; }
@@ -17,39 +15,61 @@
     width: 100%;
     height: 100%;
     @include mx.flex(column, nowrap, center, center);
-    gap: 1em;
+    gap: 2em;
+    background-color: var(--c-white)
   }
-  &__input { border: 2px solid lightblue; }
-  &__button { border: 2px solid lightblue; }
+  &__input {
+    width: 80%;
+    padding: 1em;
+
+    &--task{
+      height: 60%;
+      border: 1px solid var(--c-black);
+    }
+    &--topic{
+      height: 3rem;
+      top: 6rem;
+      left: 10%;
+      border-bottom: 1px solid var(--c-black);
+      &::placeholder {
+        font-size: 2rem;
+        color: var(--c-black);
+      }
+    }
+  }
+  &__button {
+    width: 80%;
+    padding: 0.5em 1.5em;
+    border: 1px solid var(--c-black);
+  }
   &__div {}
 }
 
 .closebtn {
-  background-color: lightslategray;
   width: 50px;
   height: 50px;
   @include mx.flex(row, nowrap, center, center);
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1em;
+  right: 1em;
   border-radius: 50%;
   cursor: pointer;
 
   &::before {
     content: '';
     width: 33px;
-    height: 3px;
+    height: 2px;
     position: absolute;
-    background-color: white;
+    background-color: var(--c-black);
     transform: rotate(-45deg);
   }
 
   &::after {
     content: '';
     width: 33px;
-    height: 3px;
+    height: 2px;
     position: absolute;
-    background-color: white;
+    background-color: var(--c-black);
     transform: rotate(45deg);
   }
 }

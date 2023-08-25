@@ -15,8 +15,10 @@ const incompletedList = document.getElementById('incomplete__list') as HTMLUList
 const completedList = document.getElementById('completed__list') as HTMLUListElement
 const listStatus = document.getElementById('status') as HTMLParagraphElement
 const form = document.getElementById('form') as HTMLFormElement
-const openBtn = document.getElementById('openbtn') as HTMLButtonElement
+const openButton = document.getElementById('openButton') as HTMLButtonElement
 const modal = document.getElementById('modal') as HTMLDivElement
+const sendButton = modal.querySelector('#submitButton') as HTMLButtonElement
+const closeButton = modal.querySelector('#closeButton') as HTMLButtonElement
 let incompleteListLenght = 0
 let completedListLenght = 0
 
@@ -25,7 +27,11 @@ showCurrentDate(currentDay, currentMonth, currentYear)
 
 const localTodos = window.localStorage.getItem('todos')
 const todos: Array<Todo> = localTodos ? JSON.parse(localTodos) : []
-if (localTodos) todos.forEach(todo => addToList(todo, true))
+if (localTodos) {
+  todos.forEach(todo => addToList(todo, true))
+} else {
+  showToDoStatus()
+}
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -45,6 +51,8 @@ form.addEventListener('submit', (e) => {
   }
 
   addToList(todo)
+  resetInputs(sendButton)
+  ChangeModalDisplay()
 })
 
 incompletedList.addEventListener('click', (e) => {
@@ -61,14 +69,13 @@ completedList.addEventListener('click', (e) => {
   updateList(li, TodoStatus.Completed)
 })
 
-openBtn.addEventListener('click', () => {
-  modal.classList.add('modal--active')
+openButton.addEventListener('click', (e) => {
+  ChangeModalDisplay()
 })
 
-modal.addEventListener('click', (e) => {
-  if (!(e.target instanceof HTMLButtonElement)) return
-
-  modal.classList.remove('modal--active')
+closeButton.addEventListener('click', (e) => {
+  resetInputs(closeButton)
+  ChangeModalDisplay()
 })
 
 function getCurrentDateData() {
@@ -105,31 +112,32 @@ function showToDoStatus() {
 }
 
 function addToList(todo: Todo, local?: boolean) {
+  const li = document.createElement('li')
+  li.classList.add('main__li', 'li')
+
   if (todo.status === TodoStatus.Incomplete) {
-    incompletedList.innerHTML += `
-      <li class="main__li li">
-        <input class="li__input" type="checkbox">
-        <div class="li__div">
-          <h3 class="li__h3">${todo.task}</h3>
-          <span class="li__span">${todo.topic}</span>
-        </div>
-      </li>
+    li.innerHTML = `
+      <input class="li__input" type="checkbox">
+      <div class="li__div">
+        <h3 class="li__h3">${todo.task}</h3>
+        <span class="li__span">${todo.topic}</span>
+      </div>
     `
 
+    incompletedList.appendChild(li)
     incompleteListLenght++
   }
 
   if (todo.status === TodoStatus.Completed) {
-    completedList.innerHTML += `
-      <li class="main__li li">
-        <input class="li__input" type="checkbox" ${local ? 'checked' : ''}>
-        <div class="li__div">
-          <h3 class="li__h3">${todo.task}</h3>
-          <span class="li__span">${todo.topic}</span>
-        </div>
-      </li>
+    li.innerHTML = `
+      <input class="li__input" type="checkbox" ${local ? 'checked' : ''}>
+      <div class="li__div">
+        <h3 class="li__h3">${todo.task}</h3>
+        <span class="li__span">${todo.topic}</span>
+      </div>
     `
 
+    completedList.appendChild(li)
     completedListLenght++
   }
 
@@ -169,4 +177,20 @@ function updateList(li: HTMLLIElement, status: TodoStatus) {
 
 function updateLocalStorage() {
   window.localStorage.setItem('todos', JSON.stringify(todos))
+}
+
+function resetInputs(button: HTMLButtonElement) {
+  const formElements = button.classList.contains('closebtn') ?
+    button.previousElementSibling!.children :
+    button.parentElement!.children
+
+  for (const formElement of formElements) {
+    if (!(formElement instanceof HTMLTextAreaElement || formElement instanceof HTMLInputElement)) continue
+
+    formElement.value = formElement.defaultValue
+  }
+}
+
+function ChangeModalDisplay() {
+  modal.classList.toggle('modal--active')
 }
