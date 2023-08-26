@@ -2,15 +2,21 @@
   --c-black: #000;
   --c-white: #fff;
   --c-blue: rgb(4, 115, 220);
+  --c-background: #fafbfb;
+  --c-border: #c9c9c9;
+  --c-line: #ececec;
   
-  --p-fonts: system-ui, Helvetica, sans-serif;
+  --p-fonts: 'Montserrat', sans-serif;
   --s-fonts: Verdana;
 }
   
 @media (prefers-color-scheme: dark) {
   :root{
+    --c-background: #151515;
+    --c-border: #080808;
     --c-black: #fff;
-    --c-white: #202020;
+    --c-line: #404040;
+    --c-white: #303030;
   }
 }
 

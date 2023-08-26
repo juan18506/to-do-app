@@ -17,6 +17,7 @@
     margin: 1em 0;
     @include mx.flex(row, nowrap, flex-start, center);
     gap: 1em;
+    animation: fadeInDown 200ms ease;
   }
   &__button {}
 }
@@ -26,21 +27,21 @@
   &__input {
     width: 1.5625em;
     height: 1.5625em;
-    border: 2px solid lightgray;
+    border: 2px solid var(--c-border);
     border-radius: 0.5em;
     flex-shrink: 0;
+    background-color: var(--c-white);
 
     &:checked { 
-      background-color: var(--c-blue);
       position: relative;
 
       &::before {
         content: '';
         width: 13px;
         height: 1px;
+        position: absolute;
         top: calc(50% - 0.5px);
         left: calc(50% - 5.5px);
-        position: absolute;
         transform: rotate(-45deg);
         background-color: var(--c-black);
       }
@@ -59,7 +60,7 @@
   &__h3 { font-weight: bold; }
   &__span {
     font-size: 0.8em;
-    opacity: 0.8;
+    opacity: 0.6;
   }
 }
 
@@ -77,7 +78,7 @@
   &::before {
     content: '';
     width: 33px;
-    height: 3px;
+    height: 2px;
     position: absolute;
     background-color: white;
   }
@@ -85,7 +86,7 @@
   &::after {
     content: '';
     width: 33px;
-    height: 3px;
+    height: 2px;
     position: absolute;
     background-color: white;
     transform: rotate(90deg);
