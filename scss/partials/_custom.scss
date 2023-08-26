@@ -1,6 +1,7 @@
 :root{
   --c-black: #000;
   --c-white: #fff;
+  --c-blue: rgb(4, 115, 220);
   
   --p-fonts: system-ui, Helvetica, sans-serif;
   --s-fonts: Verdana;
@@ -12,10 +13,6 @@
     --c-white: #202020;
   }
 }
-
-// @media (prefers-contrast: high){
-//   :root{}
-// }
 
 @media (prefers-reduced-motion: reduce) {
   * {

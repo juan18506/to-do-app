@@ -30,7 +30,31 @@
     border-radius: 0.5em;
     flex-shrink: 0;
 
-    &:checked { background-color: blue; }
+    &:checked { 
+      background-color: var(--c-blue);
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 13px;
+        height: 1px;
+        top: calc(50% - 0.5px);
+        left: calc(50% - 5.5px);
+        position: absolute;
+        transform: rotate(-45deg);
+        background-color: var(--c-black);
+      }
+      &::after {
+        content: '';
+        width: 5px;
+        height: 1px;
+        position: absolute;
+        top: 12.85px;
+        left: 3.75px;
+        transform: rotate(60deg);
+        background-color: var(--c-black);
+      }
+    }
   }
   &__h3 { font-weight: bold; }
   &__span {
@@ -46,7 +70,7 @@
   bottom: 1em;
   right: 1em;
   @include mx.flex(row, nowrap, center, center);
-  background-color: blue;
+  background-color: var(--c-blue);
   border-radius: 50%;
   cursor: pointer;
 
