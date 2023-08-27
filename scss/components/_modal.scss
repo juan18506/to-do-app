@@ -32,7 +32,7 @@
       left: 10%;
       border-bottom: 1px solid var(--c-black);
       &::placeholder {
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: var(--c-black);
       }
     }
@@ -41,6 +41,7 @@
     width: 80%;
     padding: 0.5em 1.5em;
     border: 1px solid var(--c-black);
+    cursor: pointer;
   }
   &__div {}
 }
