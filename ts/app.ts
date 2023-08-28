@@ -52,7 +52,7 @@ form.addEventListener('submit', (e) => {
 
   addToList(todo)
   resetInputs(sendButton)
-  ChangeModalDisplay()
+  changeModalDisplay()
 })
 
 incompletedList.addEventListener('click', (e) => {
@@ -70,12 +70,12 @@ completedList.addEventListener('click', (e) => {
 })
 
 openButton.addEventListener('click', (e) => {
-  ChangeModalDisplay()
+  changeModalDisplay()
 })
 
 closeButton.addEventListener('click', (e) => {
   resetInputs(closeButton)
-  ChangeModalDisplay()
+  changeModalDisplay()
 })
 
 function getCurrentDateData() {
@@ -191,6 +191,6 @@ function resetInputs(button: HTMLButtonElement) {
   }
 }
 
-function ChangeModalDisplay() {
+function changeModalDisplay() {
   modal.classList.toggle('modal--active')
 }
