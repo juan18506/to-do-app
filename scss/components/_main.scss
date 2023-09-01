@@ -5,7 +5,7 @@
   &__div {
     margin: 2em 0;
 
-    &--incomplete {}
+    &--uncompleted {}
     &--completed .li__h3 { opacity: 0.3; }
   }
   &__p {
@@ -75,6 +75,7 @@
   background-color: var(--c-blue);
   border-radius: 50%;
   cursor: pointer;
+  transition: all 200ms ease;
 
   &::before {
     content: '';
@@ -83,7 +84,6 @@
     position: absolute;
     background-color: white;
   }
-
   &::after {
     content: '';
     width: 33px;
@@ -92,4 +92,5 @@
     background-color: white;
     transform: rotate(90deg);
   }
+  &:hover { background-color: rgba(4, 115, 220, 0.9) }
 }

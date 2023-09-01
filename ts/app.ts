@@ -1,7 +1,7 @@
 'use strict'
 
 enum TodoStatus {
-  Incomplete,
+  Uncompleted,
   Completed
 }
 
@@ -11,7 +11,7 @@ type Todo = {
   status: TodoStatus
 }
 
-const incompletedList = document.getElementById('incomplete__list') as HTMLUListElement
+const uncompletedList = document.getElementById('uncompleted__list') as HTMLUListElement
 const completedList = document.getElementById('completed__list') as HTMLUListElement
 const listStatus = document.getElementById('status') as HTMLParagraphElement
 const form = document.getElementById('form') as HTMLFormElement
@@ -19,7 +19,7 @@ const openButton = document.getElementById('openButton') as HTMLButtonElement
 const modal = document.getElementById('modal') as HTMLDivElement
 const sendButton = modal.querySelector('#submitButton') as HTMLButtonElement
 const closeButton = modal.querySelector('#closeButton') as HTMLButtonElement
-let incompleteListLenght = 0
+let uncompletedListLenght = 0
 let completedListLenght = 0
 
 const { currentDay, currentMonth, currentYear } = getCurrentDateData()
@@ -47,7 +47,7 @@ form.addEventListener('submit', (e) => {
   const todo: Todo = {
     task: inputTask,
     topic: inputtopic,
-    status: TodoStatus.Incomplete
+    status: TodoStatus.Uncompleted
   }
 
   addToList(todo)
@@ -55,11 +55,11 @@ form.addEventListener('submit', (e) => {
   changeModalDisplay()
 })
 
-incompletedList.addEventListener('click', (e) => {
+uncompletedList.addEventListener('click', (e) => {
   if (!(e.target instanceof HTMLInputElement) || !e.target.checked) return
 
   const li = e.target.parentElement as HTMLLIElement
-  updateList(li, TodoStatus.Incomplete)
+  updateList(li, TodoStatus.Uncompleted)
 })
 
 completedList.addEventListener('click', (e) => {
@@ -108,14 +108,14 @@ function showCurrentDate(day: number, month: string, year: number) {
 }
 
 function showToDoStatus() {
-  listStatus.innerHTML = `${incompleteListLenght} incomplete, ${completedListLenght} completed`
+  listStatus.innerHTML = `${uncompletedListLenght} uncompleted, ${completedListLenght} completed`
 }
 
 function addToList(todo: Todo, local?: boolean) {
   const li = document.createElement('li')
   li.classList.add('main__li', 'li')
 
-  if (todo.status === TodoStatus.Incomplete) {
+  if (todo.status === TodoStatus.Uncompleted) {
     li.innerHTML = `
       <input class="li__input" type="checkbox">
       <div class="li__div">
@@ -124,8 +124,8 @@ function addToList(todo: Todo, local?: boolean) {
       </div>
     `
 
-    incompletedList.appendChild(li)
-    incompleteListLenght++
+    uncompletedList.appendChild(li)
+    uncompletedListLenght++
   }
 
   if (todo.status === TodoStatus.Completed) {
@@ -155,19 +155,19 @@ function updateList(li: HTMLLIElement, status: TodoStatus) {
   for (const todo of todos) {
     if (todo.task !== h3.innerText || todo.topic !== span.innerText) continue
 
-    todo.status = todo.status === TodoStatus.Completed ? TodoStatus.Incomplete : TodoStatus.Completed
+    todo.status = todo.status === TodoStatus.Completed ? TodoStatus.Uncompleted : TodoStatus.Completed
     break
   }
 
-  if (status === TodoStatus.Incomplete) {
+  if (status === TodoStatus.Uncompleted) {
     completedList.appendChild(li)
-    incompleteListLenght--
+    uncompletedListLenght--
     completedListLenght++
   }
 
   if (status === TodoStatus.Completed) {
-    incompletedList.appendChild(li)
-    incompleteListLenght++
+    uncompletedList.appendChild(li)
+    uncompletedListLenght++
     completedListLenght--
   }
 

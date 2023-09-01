@@ -8,31 +8,37 @@
   left: 0;
   z-index: 1;
   display: none;
-
+  
   &--active { display: initial; }
   
   &__form {
     width: 100%;
     height: 100%;
     @include mx.flex(column, nowrap, center, center);
-    gap: 2em;
+    gap: 1.5em;
     background-color: var(--c-white)
   }
   &__input {
     width: 80%;
     padding: 1em;
-
+    max-width: 800px;
+    transition: all 200ms ease;
+    
     &--task{
       height: 60%;
       border: 1px solid var(--c-black);
+      border-radius: 0.5em;
     }
     &--topic{
       height: 3rem;
       top: 6rem;
       left: 10%;
-      border-bottom: 1px solid var(--c-black);
+      border: 1px solid var(--c-black);
+      border-radius: 0.5em;
     }
   
+
+    &:hover { background-color: var(--c-line); }
     &::placeholder {
       font-size: 1.5rem;
       color: var(--c-black);
@@ -40,9 +46,14 @@
   }
   &__button {
     width: 80%;
+    max-width: 800px;
     padding: 0.5em 1.5em;
     border: 1px solid var(--c-black);
+    border-radius: 0.5em;
     cursor: pointer;
+    transition: all 200ms ease;
+
+    &:hover { background-color: var(--c-line); }
   }
   &__div {}
 }
