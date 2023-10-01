@@ -1,4 +1,4 @@
-import { Todo, TodoStatus } from '../types';
+import { type Todo, TodoStatus } from '../types';
 import { getLocalStorageTodos, updateLocalStorage } from './localStorageHelpers';
 
 const todos: Array<Todo> = getLocalStorageTodos();

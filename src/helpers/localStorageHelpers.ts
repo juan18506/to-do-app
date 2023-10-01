@@ -1,4 +1,4 @@
-import { Todo } from '../types';
+import type { Todo } from '../types';
 
 export const updateLocalStorage = (todos: Array<Todo>): void => {
   window.localStorage.setItem('todos', JSON.stringify(todos));

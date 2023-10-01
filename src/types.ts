@@ -1,4 +1,4 @@
-export enum TodoStatus {
+export const enum TodoStatus {
   Uncompleted,
   Completed
 }
