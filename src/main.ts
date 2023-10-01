@@ -3,7 +3,7 @@
 import { getCurrentDateData, showCurrentDate } from './helpers/dateHelpers';
 import { getLocalStorageTodos } from './helpers/localStorageHelpers';
 import { addToList, changeModalDisplay, resetInputs, updateList } from './helpers/todosHelpers';
-import  { Todo, TodoStatus } from './types';
+import { Todo, TodoStatus } from './types';
 
 document.addEventListener('DOMContentLoaded', () => {
   const $main: HTMLElement | null        = document.getElementById('main');
