@@ -100,5 +100,6 @@ export const resetInputs = (button: HTMLButtonElement): void => {
 export const changeModalDisplay = (): void => {
   const $modal = document.getElementById('modal');
   if ($modal === null) return;
+  
   $modal.classList.toggle('modal--active');
 };
