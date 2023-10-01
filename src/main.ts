@@ -6,10 +6,9 @@ import { addToList, changeModalDisplay, resetInputs, updateList } from './helper
 import  { Todo, TodoStatus } from './types';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const $header: HTMLElement | null      = document.getElementById('header');
   const $main: HTMLElement | null        = document.getElementById('main');
-  const $uncompletedList: Element | null = $main ? $main.firstElementChild : null;
-  const $completedList: Element | null   = $uncompletedList ? $uncompletedList.nextElementSibling : null;
+  const $uncompletedList: Element | null = document.getElementById('uncompleted__list');
+  const $completedList: Element | null   = document.getElementById('completed__list');
   const $openButton: Element | null      = $main ? $main.lastElementChild : null;
   const $modal: HTMLElement | null       = document.getElementById('modal');
   const $form: Element | null            = $modal ? $modal.firstElementChild : null;
@@ -45,18 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if ($uncompletedList !== null && $uncompletedList instanceof HTMLUListElement) {
     $uncompletedList.addEventListener('click', (event: MouseEvent) => {
-      if (!(event.currentTarget instanceof HTMLInputElement) || !event.currentTarget.checked) return;
-  
-      const li = event.currentTarget.parentElement; 
+      
+      if (!(event.target instanceof HTMLInputElement) || !event.target.checked) return;
+      
+      const li = event.target.parentElement; 
+      
       if (li instanceof HTMLLIElement) updateList(li, TodoStatus.Uncompleted);
     });
   };
 
   if ($completedList !== null && $completedList instanceof HTMLUListElement) {
     $completedList.addEventListener('click', (event: MouseEvent) => {
-      if (!(event.currentTarget instanceof HTMLInputElement) || event.currentTarget.checked) return;
+      if (!(event.target instanceof HTMLInputElement) || event.target.checked) return;
   
-      const li = event.currentTarget.parentElement;
+      const li = event.target.parentElement;
       if (li instanceof HTMLLIElement) updateList(li, TodoStatus.Completed);
     });
   };
