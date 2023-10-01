@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/to-do-app/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="It is a to-do app where you can create, set complete your to-dos and see the quantity of uncompleted-completed to-dos in real time.">
   <title>To-Do App</title>
   
-  <script type="module" crossorigin src="/to-do-app/assets/index-45b5cd34.js"></script>
-  <link rel="stylesheet" href="/to-do-app/assets/index-21f7f5e4.css">
+  <script type="module" crossorigin src="/to-do-app/assets/index-7eddc703.js"></script>
+  <link rel="stylesheet" href="/to-do-app/assets/index-d3a7f0dc.css">
 </head>
 
 <body>
@@ -29,17 +30,17 @@
       <ul class="main__ul" id="completed__list"></ul>
     </div>
 
-    <button class="main__button button" id="openButton"></button>
+    <button class="main__button button" title="Open a modal to create a new to-do"></button>
   </main>
 
   <div class="modal" id="modal">
     <form class="modal__form">
       <input class="modal__input modal__input--topic" type="text" name="topic" placeholder="Topic">
-      <textarea class="modal__input modal__input--task" type="text" name="task" placeholder="Content"></textarea>
-      <button class="modal__button" id="submitButton" type="submit">Add</button>
+      <textarea class="modal__input modal__input--task" name="task" placeholder="Content"></textarea>
+      <button class="modal__button" title="Create a new To-Do" type="submit">Add</button>
     </form>
 
-    <button class="modal__div closebtn"></button>
+    <button class="modal__div closebtn" title="Close the modal"></button>
   </div>
 
   
