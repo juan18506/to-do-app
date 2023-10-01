@@ -5,8 +5,8 @@ export const updateLocalStorage = (todos: Array<Todo>): void => {
 };
 
 export const getLocalStorageTodos = (): Array<Todo> => {
-  const localStorageTodos = window.localStorage.getItem('todos');
+  const localStorageTodos: string | null = window.localStorage.getItem('todos');
   const todos: Array<Todo> = localStorageTodos ? JSON.parse(localStorageTodos) : [];
 
-  return todos
-}
+  return todos;
+};
