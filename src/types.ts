@@ -9,7 +9,7 @@ export type Todo = {
   status: TodoStatus
 }
 
-export const enum Months {
+export enum Months {
   January,
   February,
   March,
