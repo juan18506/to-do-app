@@ -27,16 +27,19 @@ document.addEventListener('submit', (event: SubmitEvent) => {
       status: TodoStatus.Uncompleted
     };
 
-    addToList(todo);
+    addToList(todo, false);
     if (event.target.lastElementChild instanceof HTMLButtonElement) resetInputs(event.target.lastElementChild);
   };
 })
 
 document.addEventListener('click', (event: MouseEvent) => {
   if (event.target instanceof HTMLInputElement) {
-    const li: HTMLElement | null = event.target.parentElement; 
-    if (li instanceof HTMLLIElement &&  event.target.checked) updateList(li, TodoStatus.Uncompleted);
-    if (li instanceof HTMLLIElement && !event.target.checked) updateList(li, TodoStatus.Completed);
+    const li: HTMLElement | null = event.target.parentElement;
+    
+    if (li instanceof HTMLLIElement) {
+      const todoStatus = event.target.checked ? TodoStatus.Uncompleted : TodoStatus.Completed;
+      updateList(li, todoStatus);
+    };
   };
 
   if (event.target instanceof HTMLButtonElement) {
