@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do App</title>
+  
+  <script type="module" crossorigin src="/assets/index-45b5cd34.js"></script>
+  <link rel="stylesheet" href="/assets/index-21f7f5e4.css">
+</head>
+
+<body>
+
+  <header class="header" id="header">
+    <p class="header__p" id="date"></p>
+    <span class="header__span" id="status"></span>
+  </header>
+
+  <main class="main" id="main">
+    <div class="main__div main__div--uncompleted" id="uncompleted">
+      <p class="main__p">Uncompleted</p>
+      <ul class="main__ul" id="uncompleted__list"></ul>
+    </div>
+
+    <div class="main__div main__div--completed">
+      <p class="main__p">Completed</p>
+      <ul class="main__ul" id="completed__list"></ul>
+    </div>
+
+    <button class="main__button button" id="openButton"></button>
+  </main>
+
+  <div class="modal" id="modal">
+    <form class="modal__form">
+      <input class="modal__input modal__input--topic" type="text" name="topic" placeholder="Topic">
+      <textarea class="modal__input modal__input--task" type="text" name="task" placeholder="Content"></textarea>
+      <button class="modal__button" id="submitButton" type="submit">Add</button>
+    </form>
+
+    <button class="modal__div closebtn"></button>
+  </div>
+
+  
+</body>
+
+</html>
