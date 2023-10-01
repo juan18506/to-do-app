@@ -1,12 +1,12 @@
 'use strict';
 
-import { getCurrentDateData, showCurrentDate } from './helpers/dateHelpers';
+import { getCurrentDate, showCurrentDate } from './helpers/dateHelpers';
 import { getLocalStorageTodos } from './helpers/localStorageHelpers';
 import { addToList, changeModalDisplay, resetInputs, updateList } from './helpers/todosHelpers';
 import { Todo, TodoStatus } from './types';
 
-const { currentDay, currentMonth, currentYear } = getCurrentDateData();
-showCurrentDate(currentDay, currentMonth, currentYear);
+const currentDate = getCurrentDate();
+showCurrentDate(currentDate);
 
 const todos: Array<Todo> = getLocalStorageTodos();
 todos.forEach(todo => addToList(todo, true));

@@ -1,16 +1,19 @@
-import { Months } from '../types';
+import { CurrentDate, Months } from '../types';
 
-export const getCurrentDateData = () => {
-  const currentDate = new Date(Date.now());
-  const currentMonth = Months[currentDate.getMonth()];
-  const currentDay = currentDate.getDate();
-  const currentYear = currentDate.getFullYear();
+export const getCurrentDate = (): CurrentDate => {
+  const currentDate: Date = new Date(Date.now());
+
+  const currentDay  : number = currentDate.getDate();
+  const currentMonth: string = Months[currentDate.getMonth()];
+  const currentYear : number = currentDate.getFullYear();
 
   return { currentDay, currentMonth, currentYear };
 };
 
-export const showCurrentDate = (day: number, month: string, year: number): void => {
-  const $date = document.getElementById('date');
+export const showCurrentDate = (currentDate: CurrentDate): void => {
+  const $date: HTMLElement | null = document.getElementById('date');
   if ($date === null) return;
-  $date.innerHTML = `${month} ${day}, ${year}`;
+
+  const { currentDay, currentMonth, currentYear } = currentDate;
+  $date.innerHTML = `${currentMonth} ${currentDay}, ${currentYear}`;
 };

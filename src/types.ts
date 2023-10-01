@@ -23,3 +23,9 @@ export enum Months {
   November,
   December
 }
+
+export interface CurrentDate {
+  currentDay: number;
+  currentMonth: string;
+  currentYear: number;
+}
