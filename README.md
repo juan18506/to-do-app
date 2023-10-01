@@ -18,7 +18,27 @@ It's a to-do app where you can create, set complete your to-dos and see the quan
 
 
 ## Install
-This project does not need installation, simply open the index.html file on a browser.
+
+### Runing the project
+
+Clone this repository: 
+
+```
+git clone https://github.com/juan18506/to-do-app.git
+cd to-do-app
+```
+
+Install packages :
+
+```
+pnpm install
+```
+
+When installation is complete, run :
+
+```
+pnpm dev
+```
 
 ## License 
 MIT License
