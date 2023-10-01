@@ -22,7 +22,7 @@ export const addToList = (todo: Todo, isLocal: boolean): void => {
 
   if (todo.status === TodoStatus.Uncompleted) {
     newListItem.innerHTML = `
-      <input class="li__input" type="checkbox">
+      <input class="li__input" title="Toggle To-Do status" type="checkbox">
       <div class="li__div">
         <h3 class="li__h3">${todo.task}</h3>
         <span class="li__span">${todo.topic}</span>
@@ -35,7 +35,7 @@ export const addToList = (todo: Todo, isLocal: boolean): void => {
     };
   } else if (todo.status === TodoStatus.Completed) {
     newListItem.innerHTML = `
-      <input class="li__input" type="checkbox" ${isLocal ? 'checked' : ''}>
+      <input class="li__input" title="Toggle To-Do status" type="checkbox" ${isLocal ? 'checked' : ''}>
       <div class="li__div">
         <h3 class="li__h3">${todo.task}</h3>
         <span class="li__span">${todo.topic}</span>
