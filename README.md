@@ -1,6 +1,6 @@
 # To-Do app
 
-It's a to-do app where you can create, set complete your to-dos and see the quantity of uncompleted-completed to-dos in real time, don't worry, your to-dos will be saved even after leaving the page!. It was made with HTML, SCSS, BEM methodology and Typescript.
+It's a to-do app where you can create, complete, and keep track of your to-dos in real time. Don't worry, your to-dos will be saved even after leaving the page! It was created using HTML, SCSS, the BEM methodology, and TypeScript.
 
 [![Live Site](https://img.shields.io/static/v1?label=&message=Live%20Site&color=167200&style=for-the-badge)](https://juan18506.github.io/to-do-app/)
 [![Github Repository](https://img.shields.io/static/v1?label=&message=Github%20Repository&color=000000&style=for-the-badge&logo=github&logoColor=white)](https://github.com/juan18506/to-do-app/)
@@ -37,7 +37,7 @@ pnpm install
 When installation is complete, run :
 
 ```
-pnpm dev
+pnpm run dev
 ```
 
 ## License 
